@@ -1,0 +1,48 @@
+[
+  {
+    "id": "proc.lines->resonancia",
+    "detect": { "kind": "process", "match": { "cmd": ["*"] } },
+    "ingest": {
+      "format": "lines",
+      "map": {
+        "kind": "event.resonancia",
+        "payload": { "resonancias": [ { "evento": "ui.log", "dato": { "line": "$line" } } ] },
+        "ts": "$ts"
+      }
+    },
+    "emit": {
+      "accept": ["call.interpretar"],
+      "format": "jsonl",
+      "map": {
+        "value": {
+          "version": "1.0",
+          "kind": "call.interpretar",
+          "ts": "$ts",
+          "payload": "$payload"
+        }
+      }
+    }
+  },
+  {
+    "id": "http.datovivo",
+    "detect": { "kind": "http", "match": { "contentType": "application/x.datovivo+jsonl" } },
+    "ingest": {
+      "format": "jsonl",
+      "map": { "kind": "$kind", "payload": "$payload", "ts": "$ts", "ref": "$ref", "version": "1.0" }
+    },
+    "emit": { "accept": [], "format": "none", "map": {} }
+  },
+  {
+    "id": "file.csv->dv",
+    "detect": { "kind": "file", "match": { "ext": ".csv" } },
+    "ingest": {
+      "format": "csv",
+      "map": {
+        "kind": "call.interpretar",
+        "payload": { "señal": { "simbolo": "$col[0]", "payload": { "v": "$col[1]" } } },
+        "ts": "$ts"
+      }
+    },
+    "emit": { "accept": [], "format": "none", "map": {} }
+  }
+]
