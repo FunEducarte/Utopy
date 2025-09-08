@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://utopy.dev/schemas/abi/v1/envelope.json",
+  "type": "object",
+  "required": ["version", "kind", "ts"],
+  "properties": {
+    "version": { "const": "1.0" },
+    "id": { "type": "string" },
+    "ref": { "type": "string" },
+    "kind": { "type": "string" },
+    "ts": { "type": "string", "format": "date-time" },
+    "nodo_id": { "type": "string" },
+    "ctx": { "type": "object", "additionalProperties": true },
+    "seguridad": { "type": "object", "additionalProperties": true },
+    "payload": { "type": "object" }
+  },
+  "additionalProperties": false
+}

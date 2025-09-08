@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://utopy.dev/schemas/abi/v1/cap.tell.json",
+  "type": "object",
+  "required": ["capabilities"],
+  "properties": {
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind"],
+        "properties": {
+          "id":   { "type": "string" },
+          "kind": { "type": "string" },    
+          "claims": { "type": "array", "items": { "type": "string" } },
+          "conf": { "type": "number", "minimum": 0, "maximum": 1 },
+          "meta": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

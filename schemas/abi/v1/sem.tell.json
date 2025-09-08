@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://utopy.dev/schemas/abi/v1/sem.tell.json",
+  "type": "object",
+  "required": ["simbolo", "significado"],
+  "properties": {
+    "simbolo": { "type": "string" },
+    "significado": {
+      "type": "object",
+      "properties": {
+        "clase": { "type": "string" },
+        "unidad": { "type": "string" },
+        "path":  { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "confianza": { "type": "number", "minimum": 0, "maximum": 1 },
+    "fuente": { "type": "string" }
+  },
+  "additionalProperties": false
+}

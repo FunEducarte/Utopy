@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>UTOPÝ - Manifestación Simbiótica</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#00ffcc">
+</head>
+<body>
+  <h1>🌀 Manifestando UTOPÝ...</h1>
+
+  <!-- Resonador simbiótico universal -->
+  <script type="module" src="./resonador.embed.js"></script>
+
+  <!-- Service Worker para modo offline -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log("✅ SW simbiótico registrado"))
+        .catch(console.error);
+    }
+  </script>
+</body>
+</html>

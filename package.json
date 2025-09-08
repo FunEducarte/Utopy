@@ -15,22 +15,31 @@
     "License"
   ],
   "scripts": {
-    "clean:bin": "rm -rf bin/*",
-    "build:pkg": "npm run clean:bin && tsc --project tsconfig.pkg.json && pkg dist/pkg/resonador.auto.js --targets node18-linux-x64 --output bin/resonador.bin-linux && pkg dist/pkg/resonador.auto.js --targets node18-win-x64 --output bin/resonador.bin-win.exe && pkg dist/pkg/resonador.auto.js --targets node18-macos-x64 --output bin/resonador.bin-macos",
-    "build:wasm": "tsc --project tsconfig.wasm.json",
-    "build": "tsc && npm run build:pkg && npm run build:wasm",
-    "copy:web": "mkdir public\\wasm-build && xcopy /E /Y wasm-build\\* public\\wasm-build\\ && xcopy /Y dist\\index.mjs public\\dist\\ && xcopy /Y resonador.embed.js public\\ && xcopy /Y index.html public\\ && xcopy /Y manifiesto.utopy public\\",
-    "start": "node dist/index.mjs"
+    "dev:node": "tsx runtime/nodemind-ts.ts",
+    "bus:ws": "tsx runtime/ws-bus.ts",
+    "bus:ws:8787": "cross-env UTOPY_WS_PORT=8787 UTOPY_NODE_CMD=node UTOPY_NODE_ARGS=\"[\\\"dist/runtime/nodemind-ts.js\\\"]\" tsx runtime/ws-bus.ts",
+    "bus:ws:8788": "cross-env UTOPY_WS_PORT=8788 UTOPY_NODE_CMD=node UTOPY_NODE_ARGS=\"[\\\"dist/runtime/nodemind-ts.js\\\"]\" tsx runtime/ws-bus.ts",
+    "bus:ws:dev": "cross-env UTOPY_WS_PORT=8787 UTOPY_NODE_CMD=npx UTOPY_NODE_ARGS=\"[\\\"tsx\\\",\\\"runtime/nodemind-ts.ts\\\"]\" tsx runtime/ws-bus.ts",
+    "up": "npm run bus:ws",
+    "up:dev": "npm run bus:ws:dev",
+    "cap:exec": "cross-env UTOPY_WS_URL=ws://localhost:8787 UTOPY_AUTO_HTTP_BASE=https://api.midominio.com UTOPY_AUTO_HTTP_ALLOW=api.midominio.com node runtime/workers/cap-exec.js"
   },
   "dependencies": {
     "@noble/hashes": "^1.8.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "ethers": "^6.10.0",
     "hyperswarm": "^4.11.7",
     "qrcode-generator": "^2.0.2",
-    "uint8arrays": "^5.1.0"
+    "uint8arrays": "^5.1.0",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
     "@types/node": "^24.2.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^7.0.3",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.20.5",
     "typescript": "^5.4.3"
   }
 }

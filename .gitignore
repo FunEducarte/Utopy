@@ -1,0 +1,33 @@
+cat > .gitignore <<'IG'
+# Node / TypeScript
+node_modules/
+dist/
+build/
+coverage/
+*.log
+npm-debug.log*
+pnpm-lock.yaml
+yarn.lock
+
+# Datos locales / estados / logs
+data/
+state/
+logs/
+*.jsonl
+
+# Web / WASM / caches
+web/.cache/
+web/build/
+public/*.cache
+resonador-wasm/build/
+*.wasm
+
+# SO / editores
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+uTOPY.code-workspace
+IG
+
+resonador-wasm/

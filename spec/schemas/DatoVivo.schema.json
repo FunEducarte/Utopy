@@ -1,0 +1,4 @@
+{ "$schema":"https://json-schema.org/draft/2020-12/schema", "type":"object",
+  "required":["simbolo"],
+  "properties":{ "simbolo":{"type":"string"}, "payload":{}, "meta":{"type":"object"}, "seguridad":{"type":"object"} },
+  "additionalProperties":false }

@@ -1,0 +1,9 @@
+{"$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://utopy.dev/schemas/abi/v1/event.ack.json",
+  "type": "object",
+  "properties": {
+    "ok": { "type": "boolean", "const": true },
+    "nota": { "type": "string" }
+  },
+  "additionalProperties": false
+}

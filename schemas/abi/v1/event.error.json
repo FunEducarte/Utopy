@@ -1,0 +1,18 @@
+{"$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://utopy.dev/schemas/abi/v1/event.error.json",
+  "type": "object",
+  "required": ["error"],
+  "properties": {
+    "error": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "details": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,5 @@
+rol productor; rol comprador;
+canal 🎥; canal 📄; canal 🌡️;
+intento firmar_contrato { requiere = [firmas] }
+diccionario 🎥 = [stream, fps]
+diccionario 📄 = [clausulas, firmas]

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://utopy.dev/schemas/abi/v1/event.resonancia.json",
+  "type": "object",
+  "required": ["resonancias"],
+  "properties": {
+    "resonancias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evento", "dato"],
+        "properties": {
+          "evento": { "type": "string" },
+          "dato": { "type": ["object","array","string","number","boolean","null"] },
+          "caps": { "type": "array", "items": { "type": "string" } },
+          "universal": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    }
+    
+  },
+  "additionalProperties": false
+}
